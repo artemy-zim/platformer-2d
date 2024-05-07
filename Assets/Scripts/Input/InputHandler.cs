@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour
@@ -7,43 +6,19 @@ public class InputHandler : MonoBehaviour
 
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerJumper _playerJumper;
-
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception e) 
-        {
-            enabled = false;
-            throw e;
-        }
-    }
-
-    private void Validate()
-    {
-        if (_playerJumper == null)
-            throw new ArgumentNullException(nameof(_playerJumper));
-
-        if(_playerMover == null)
-            throw new ArgumentNullException(nameof(_playerMover));
-    }
+    [SerializeField] private PlayerAttacker _playerAttacker;
 
     private void Update()
     {
         HandleMoveInput();
         HandleJumpInput();
+        HandleAttackInput();
     }
 
     private void HandleJumpInput()
     {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
             _playerJumper.TryJump();
-        }
-
-        _playerJumper.TryAnimateJump();
     }
 
     private void HandleMoveInput()
@@ -51,5 +26,11 @@ public class InputHandler : MonoBehaviour
         float direction = Input.GetAxisRaw(Horizontal);
 
         _playerMover.TryMove(direction);
+    }
+
+    private void HandleAttackInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+            _playerAttacker.TryAttack();
     }
 }

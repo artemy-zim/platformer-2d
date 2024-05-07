@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Follower : MonoBehaviour
+public class MainCamera : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private Vector2 _offset;

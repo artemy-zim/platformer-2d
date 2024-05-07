@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CollectTrigger : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out Player _))
-            Destroy(gameObject);
+        if (other.TryGetComponent(out Player player))
+            GetComponent<ICollectible>().Collect(player);
     }
 }

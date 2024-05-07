@@ -6,35 +6,18 @@ public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private PlayerJumpAnimator _jumpAnimator;
     [SerializeField] private GroundChecker _groundChecker;
-    [SerializeField, Min(0)] private float _jumpForce;
+    [SerializeField, Range(0, float.MaxValue)] private float _jumpForce;
 
     private Rigidbody2D _rigidbody;
-
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch(Exception e) 
-        {
-            enabled = false;
-            throw e;
-        }
-    }
-
-    private void Validate()
-    {
-        if(_jumpAnimator == null)
-            throw new ArgumentNullException(nameof(_jumpAnimator));
-
-        if(_groundChecker == null)
-            throw new ArgumentNullException(nameof(_groundChecker));
-    }
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        TryAnimateJump();
     }
 
     public void TryJump()
@@ -43,7 +26,7 @@ public class PlayerJumper : MonoBehaviour
             _rigidbody.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse);
     }
 
-    public void TryAnimateJump()
+    private void TryAnimateJump()
     {
         if (_groundChecker.IsJumping == false)
             _jumpAnimator.StopJump();
