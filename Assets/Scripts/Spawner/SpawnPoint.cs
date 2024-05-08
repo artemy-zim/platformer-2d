@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public void Spawn(GameObject gameObject)
+    public void TrySpawn(GameObject prefab)
     {
-        if(gameObject==null) 
-            throw new ArgumentNullException(nameof(gameObject));
+        if(prefab==null) 
+            throw new ArgumentNullException(nameof(prefab));
 
-        Instantiate(gameObject, transform.position, Quaternion.identity, transform);
+        if(prefab.TryGetComponent(out ICollectible _))
+            Instantiate(prefab, transform.position, Quaternion.identity, transform);
     }
 }

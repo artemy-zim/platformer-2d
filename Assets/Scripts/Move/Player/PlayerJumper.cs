@@ -29,8 +29,8 @@ public class PlayerJumper : MonoBehaviour
     private void TryAnimateJump()
     {
         if (_groundChecker.IsJumping == false)
-            _jumpAnimator.StopJump();
+            _jumpAnimator.Stop();
         else
-            _jumpAnimator.Jump();
+            _jumpAnimator.Play();
     }
 }

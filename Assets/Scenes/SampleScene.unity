@@ -15248,7 +15248,7 @@ MonoBehaviour:
   - {fileID: 198405493}
   - {fileID: 1612864890}
   - {fileID: 217134556}
-  _gameObject: {fileID: 2500617834758721627, guid: c90052c22d225684287bc2d37fdc334f, type: 3}
+  _prefab: {fileID: 2500617834758721627, guid: c90052c22d225684287bc2d37fdc334f, type: 3}
   _amount: 2
 --- !u!4 &812346923
 Transform:

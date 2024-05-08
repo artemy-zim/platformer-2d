@@ -17,12 +17,12 @@ public class PlayerJumpAnimator : MonoBehaviour
         }
     }
 
-    public void Jump()
+    public void Play()
     {
         _animator.SetBool(_isJumping, true);
     }
 
-    public void StopJump()
+    public void Stop()
     {
         _animator.SetBool(_isJumping, false);
     }

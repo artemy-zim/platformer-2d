@@ -15,13 +15,13 @@ public class ColorChanger : MonoBehaviour
         _defaultColor = _renderer.color;
     }
 
-    public void ChangeColor()
+    public void Change()
     {
         _renderer.color = color;
-        Invoke(nameof(ResetColor), _colorCooldown);
+        Invoke(nameof(Reset), _colorCooldown);
     }
 
-    private void ResetColor()
+    private void Reset()
     {
         _renderer.color = _defaultColor;
     }

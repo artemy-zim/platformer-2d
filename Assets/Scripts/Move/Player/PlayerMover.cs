@@ -15,11 +15,11 @@ public class PlayerMover : MonoBehaviour
         {
             _turner.TurnTowards(direction);
 
-            _moveAnimator.Run();
+            _moveAnimator.Play();
         }
         else
         {
-            _moveAnimator.StopRun();
+            _moveAnimator.Stop();
         }
 
         transform.Translate(Math.Abs(direction) * _speed * Time.deltaTime * Vector2.right);

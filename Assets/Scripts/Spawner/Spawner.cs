@@ -4,7 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnPoint> _spawnPoints;
-    [SerializeField] private GameObject _gameObject;
+    [SerializeField] private GameObject _prefab;
     [SerializeField] private int _amount;
 
     private void OnValidate()
@@ -36,6 +36,6 @@ public class Spawner : MonoBehaviour
     private void SpawnGameObjects()
     {
         for (int i = 0; i < _amount; i++)
-            _spawnPoints[i].Spawn(_gameObject);
+            _spawnPoints[i].TrySpawn(_prefab);
     }
 }

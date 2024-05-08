@@ -6,8 +6,10 @@ public class HealthKit : MonoBehaviour, ICollectible
 
     public void Collect(Player player)
     {
-        player.GetComponent<Health>().TryHeal(_healAmount);
-
-        Destroy(gameObject);
+        if(player.TryGetComponent(out Health health))
+        {
+            health.TryHeal(_healAmount);
+            Destroy(gameObject);
+        }
     }
 }

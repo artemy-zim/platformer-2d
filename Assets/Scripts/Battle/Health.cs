@@ -42,7 +42,5 @@ public class Health : MonoBehaviour
 
         if(_currentHealth > _maxHealth)
             _currentHealth = _maxHealth;
-
-        Debug.Log($"{gameObject.name}: Health {_currentHealth}");
     }
 }

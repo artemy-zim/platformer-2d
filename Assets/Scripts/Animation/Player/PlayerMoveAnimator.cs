@@ -17,12 +17,12 @@ public class PlayerMoveAnimator : MonoBehaviour
         }
     }
 
-    public void Run()
+    public void Play()
     {
         _animator.SetBool(_isRunning, true);
     }
 
-    public void StopRun()
+    public void Stop()
     {
         _animator.SetBool(_isRunning, false);
     }
