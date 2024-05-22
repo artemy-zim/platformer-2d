@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class GroundChecker : MonoBehaviour
 {
     private List<Collider2D> _colliders = new List<Collider2D>();
-
     private bool _isJumping;
 
     public bool IsJumping => _isJumping;

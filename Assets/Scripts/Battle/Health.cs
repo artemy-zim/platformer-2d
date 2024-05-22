@@ -7,6 +7,11 @@ public class Health : MonoBehaviour
 
     private float _currentHealth;
 
+    public float CurrentHealth => _currentHealth;
+    public float MaxHealth => _maxHealth;
+
+    public event Action OnHealthChanged;
+
     private void OnEnable()
     {
         _currentHealth = _maxHealth;
@@ -17,30 +22,33 @@ public class Health : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        _currentHealth -= damage;
-
-        Validate();
+        ApplyHealthChange(-damage);
     }
 
     public void TryHeal(float heal)
     {
-        if(heal < 0)
+        if (heal < 0)
             throw new ArgumentOutOfRangeException(nameof(heal));
 
-        _currentHealth += heal;
+        ApplyHealthChange(heal);
+    }
 
+    private void ApplyHealthChange(float amount)
+    {
+        _currentHealth += amount;
         Validate();
+        OnHealthChanged?.Invoke();
     }
 
     private void Validate()
     {
-        if(_currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             _currentHealth = 0;
             Destroy(gameObject);
         }
 
-        if(_currentHealth > _maxHealth)
+        if (_currentHealth > _maxHealth)
             _currentHealth = _maxHealth;
     }
 }

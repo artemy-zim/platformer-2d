@@ -15,7 +15,7 @@ public class PlayerJumper : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         TryAnimateJump();
     }

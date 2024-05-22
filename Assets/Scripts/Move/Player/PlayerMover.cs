@@ -22,6 +22,6 @@ public class PlayerMover : MonoBehaviour
             _moveAnimator.Stop();
         }
 
-        transform.Translate(Math.Abs(direction) * _speed * Time.deltaTime * Vector2.right);
+        transform.Translate(direction * _speed * Time.deltaTime * Vector2.right);
     }
 }
