@@ -784,6 +784,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1585466945799034789, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 105513399}
     - target: {fileID: 2039457868222405827, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1089,11 +1093,11 @@ PrefabInstance:
       objectReference: {fileID: 1352681323}
     - target: {fileID: 950846140070014318, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.65
+      value: -7.71
       objectReference: {fileID: 0}
     - target: {fileID: 950846140070014318, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.85
+      value: -6.71
       objectReference: {fileID: 0}
     - target: {fileID: 950846140070014318, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1143,6 +1147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4414981897515206665, guid: 83352134ea14c70449209fae4c17f423, type: 3}
+      propertyPath: _radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4862501208507171016, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -1162,6 +1170,18 @@ PrefabInstance:
     - target: {fileID: 4916656829812544480, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591245880761422854, guid: 83352134ea14c70449209fae4c17f423, type: 3}
+      propertyPath: _cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591245880761422854, guid: 83352134ea14c70449209fae4c17f423, type: 3}
+      propertyPath: _attackTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591245880761422854, guid: 83352134ea14c70449209fae4c17f423, type: 3}
+      propertyPath: _damageAmount
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6852612226800275089, guid: 83352134ea14c70449209fae4c17f423, type: 3}
       propertyPath: _damageAmount
@@ -15498,6 +15518,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 966407145}
     - target: {fileID: -2754078009653982853, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
+      propertyPath: _damageAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -2754078009653982853, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
       propertyPath: _damageCooldown
       value: 5
       objectReference: {fileID: 0}
@@ -15509,6 +15533,10 @@ PrefabInstance:
       propertyPath: _waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1413080056}
+    - target: {fileID: 1585466945799034789, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 105513399}
     - target: {fileID: 2039457868222405827, guid: 225ff039c5871d0498617fbfa90ffb62, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

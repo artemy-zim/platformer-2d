@@ -14,10 +14,10 @@ public class HealthViewBarSmooth : HealthView
         if (_healthUpdateCoroutine != null)
             StopCoroutine(_healthUpdateCoroutine);
 
-        _healthUpdateCoroutine = StartCoroutine(OnHealthUpdate());
+        _healthUpdateCoroutine = StartCoroutine(OnHealthUpdateCoroutine());
     }
 
-    private IEnumerator OnHealthUpdate()
+    private IEnumerator OnHealthUpdateCoroutine()
     {
         float value = Health.CurrentHealth / MaxHealth;
         float epsilon = 0.001f;

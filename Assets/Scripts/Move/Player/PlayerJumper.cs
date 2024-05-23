@@ -15,9 +15,19 @@ public class PlayerJumper : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        MovementInputEvents.OnJumpInput += TryJump;
+    }
+
     private void FixedUpdate()
     {
         TryAnimateJump();
+    }
+
+    private void OnDisable()
+    {
+        MovementInputEvents.OnJumpInput -= TryJump;
     }
 
     public void TryJump()

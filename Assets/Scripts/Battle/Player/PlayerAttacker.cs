@@ -7,6 +7,16 @@ public class PlayerAttacker : MonoBehaviour
 
     private Ray _ray;
 
+    private void OnEnable()
+    {
+        AttackInputEvents.OnAttackInput += TryAttack;
+    }
+
+    private void OnDisable()
+    {
+        AttackInputEvents.OnAttackInput -= TryAttack;
+    }
+
     public void TryAttack()
     {
         _ray = new Ray(transform.position, transform.right);

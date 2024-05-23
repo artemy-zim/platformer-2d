@@ -6,8 +6,8 @@ public class EnemyAttacker : MonoBehaviour
     [SerializeField, Range(0, float.MaxValue)] private float _damageAmount;
     [SerializeField, Range(0, float.MaxValue)] private float _damageCooldown;
 
-    private Player _playerInTrigger;
-    private float _lastDamageTime;
+    private Player _playerAttacked;
+    private float _lastAttackTime;
 
     private void FixedUpdate()
     {
@@ -18,22 +18,22 @@ public class EnemyAttacker : MonoBehaviour
     {
 
         if (collision.TryGetComponent(out Player player))
-            _playerInTrigger = player;
+            _playerAttacked = player;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _playerInTrigger = null;
+        _playerAttacked = null;
     }
 
     private void ApplyDamage()
     {
-        if( _playerInTrigger != null && Time.time - _lastDamageTime > _damageCooldown)
+        if( _playerAttacked != null && Time.time - _lastAttackTime > _damageCooldown)
         {
-            if(_playerInTrigger.TryGetComponent(out DamageTaker damageTaker))
+            if(_playerAttacked.TryGetComponent(out DamageTaker damageTaker))
             {
                 damageTaker.TakeDamage(_damageAmount, transform.position);
-                _lastDamageTime = Time.time;
+                _lastAttackTime = Time.time;
             }
         }
     }

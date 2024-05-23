@@ -6,7 +6,17 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private PlayerMoveAnimator _moveAnimator;
     [SerializeField] private Turner _turner;
     [SerializeField, Range(0, float.MaxValue)] private float _speed;
-    
+
+    private void OnEnable()
+    {
+        MovementInputEvents.OnMoveInput += TryMove;
+    }
+
+    private void OnDisable()
+    {
+        MovementInputEvents.OnMoveInput -= TryMove;
+    }
+
     public void TryMove(float direction)
     {
         int noDirection = 0;

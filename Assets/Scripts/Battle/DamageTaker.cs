@@ -12,4 +12,9 @@ public class DamageTaker : MonoBehaviour
         _hitForcer.DoHitForce(enemyPosition);
         _colorChanger.Change();
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        _health.TryDealDamage(damageAmount);
+    }
 }
