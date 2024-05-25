@@ -13,8 +13,11 @@ public class DamageTaker : MonoBehaviour
         _colorChanger.Change();
     }
 
-    public void TakeDamage(float damageAmount)
+    public float TakeVampireDamage(float damageAmount)
     {
-        _health.TryDealDamage(damageAmount);
+        float damageTaken = Mathf.Min(_health.CurrentHealth, damageAmount);
+        _health.TryDealDamage(damageTaken);
+
+        return damageTaken;
     }
 }

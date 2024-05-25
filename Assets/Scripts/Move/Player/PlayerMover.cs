@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
+    [SerializeField] private MoveInput _input;
     [SerializeField] private PlayerMoveAnimator _moveAnimator;
     [SerializeField] private Turner _turner;
     [SerializeField, Range(0, float.MaxValue)] private float _speed;
 
     private void OnEnable()
     {
-        MovementInputEvents.OnMoveInput += TryMove;
+        _input.OnMoveInput += TryMove;
     }
 
     private void OnDisable()
     {
-        MovementInputEvents.OnMoveInput -= TryMove;
+        _input.OnMoveInput -= TryMove;
     }
 
     public void TryMove(float direction)

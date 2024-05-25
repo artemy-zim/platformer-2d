@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour
 {
+    [SerializeField] private AttackInput _input;
     [SerializeField] private float _damageAmount;
     [SerializeField] private float _attackDistance;
 
@@ -9,12 +10,12 @@ public class PlayerAttacker : MonoBehaviour
 
     private void OnEnable()
     {
-        AttackInputEvents.OnAttackInput += TryAttack;
+        _input.OnAttackInput += TryAttack;
     }
 
     private void OnDisable()
     {
-        AttackInputEvents.OnAttackInput -= TryAttack;
+        _input.OnAttackInput -= TryAttack;
     }
 
     public void TryAttack()

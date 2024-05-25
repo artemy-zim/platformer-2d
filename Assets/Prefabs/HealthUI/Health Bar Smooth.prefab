@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6757248994137101086}
   - component: {fileID: 7261184146929467999}
   m_Layer: 5
-  m_Name: Bar Smooth
+  m_Name: Health Bar Smooth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

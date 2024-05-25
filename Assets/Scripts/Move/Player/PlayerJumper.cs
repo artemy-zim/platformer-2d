@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJumper : MonoBehaviour
 {
+    [SerializeField] private JumpInput _input;
     [SerializeField] private PlayerJumpAnimator _jumpAnimator;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField, Range(0, float.MaxValue)] private float _jumpForce;
@@ -17,7 +18,7 @@ public class PlayerJumper : MonoBehaviour
 
     private void OnEnable()
     {
-        MovementInputEvents.OnJumpInput += TryJump;
+       _input.OnJumpInput += TryJump;
     }
 
     private void FixedUpdate()
@@ -27,7 +28,7 @@ public class PlayerJumper : MonoBehaviour
 
     private void OnDisable()
     {
-        MovementInputEvents.OnJumpInput -= TryJump;
+        _input.OnJumpInput -= TryJump;
     }
 
     public void TryJump()

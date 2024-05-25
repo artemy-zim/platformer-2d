@@ -1,17 +1,13 @@
 using UnityEngine;
 
-public class ClosestEnemyDefiner : MonoBehaviour
+public class CircleEnemyDefiner : MonoBehaviour
 {
-    [SerializeField] private float _radius;
-
-    public float Radius => _radius;
-
-    public DamageTaker GetClosestDamageTaker()
+    public DamageTaker GetClosestDamageTaker(float radius)
     {
-        Collider2D[] colliders = GetAllColliders();
+        Collider2D[] colliders = GetAllColliders(radius);
 
         DamageTaker closestDamageTaker = null;
-        float minDistance = float.MaxValue;
+        float minSqrDistance = float.MaxValue;
 
         foreach (Collider2D collider in colliders)
         {
@@ -19,11 +15,11 @@ public class ClosestEnemyDefiner : MonoBehaviour
                 collider.gameObject != gameObject && 
                 collider.TryGetComponent(out DamageTaker damageTaker))
             {
-                float distance = Vector2.Distance(transform.position, damageTaker.transform.position);
+                float sqrDistance = (transform.position - damageTaker.transform.position).sqrMagnitude;
 
-                if (distance < minDistance)
+                if (sqrDistance < minSqrDistance)
                 {
-                    minDistance = distance;
+                    minSqrDistance = sqrDistance;
                     closestDamageTaker = damageTaker;
                 }
             }
@@ -32,12 +28,12 @@ public class ClosestEnemyDefiner : MonoBehaviour
         return closestDamageTaker;
     }
 
-    private Collider2D[] GetAllColliders()
+    private Collider2D[] GetAllColliders(float radius)
     {
         int collidersMaxAmount = 5;
         Collider2D[] colliders = new Collider2D[collidersMaxAmount];
 
-        Physics2D.OverlapCircleNonAlloc(transform.position, _radius, colliders);
+        Physics2D.OverlapCircleNonAlloc(transform.position, radius, colliders);
 
         return colliders;
     }
