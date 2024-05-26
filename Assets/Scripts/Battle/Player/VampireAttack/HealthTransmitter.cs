@@ -5,18 +5,14 @@ public class HealthTransmitter : MonoBehaviour
     [SerializeField] private PlayerVampireAttacker _attacker;
     [SerializeField] private Health _health;
 
-    private void OnEnable()
+    private void Update()
     {
-       _attacker.OnVampireAttackDamageDealing += VampireAttackDamageDealingHandler;
+        TryTransfer();
     }
 
-    private void OnDisable()
+    private void TryTransfer()
     {
-        _attacker.OnVampireAttackDamageDealing -= VampireAttackDamageDealingHandler;
-    }
-
-    private void VampireAttackDamageDealingHandler(float damage)
-    {
-        _health.TryHeal(damage);
+        if (_attacker.DamageDealt > 0)
+            _health.TryHeal(_attacker.DamageDealt);
     }
 }

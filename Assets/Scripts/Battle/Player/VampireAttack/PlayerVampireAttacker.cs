@@ -12,9 +12,11 @@ public class PlayerVampireAttacker : MonoBehaviour
     [SerializeField] private float _radius;
 
     private Coroutine _onDealDamageCoroutine;
+    private float _damageDealt;
+
+    public float DamageDealt => _damageDealt;
 
     public event Action<float> OnVampireAttackStarted;
-    public event Action<float> OnVampireAttackDamageDealing;
     public event Action OnVampireAttackStopped;
 
     private void OnEnable()
@@ -45,24 +47,19 @@ public class PlayerVampireAttacker : MonoBehaviour
     {
         float endTime = Time.time + _attackTime;
 
-        while (damageTaker != null && Time.time < endTime)
+        while (Time.time < endTime)
         {
-            float distance = Vector2.Distance(transform.position, damageTaker.transform.position);
+            if (damageTaker != null)
+                _damageDealt = damageTaker.TakeVampireDamage(_damageAmount);
+            else
+                _damageDealt = 0;
 
-            if (distance > _radius)
-            {
-                damageTaker = _enemyDefiner.GetClosestDamageTaker(_radius);
-
-                if (damageTaker == null)
-                    break;
-            }
-
-            float damageTaken = damageTaker.TakeVampireDamage(_damageAmount);
-            OnVampireAttackDamageDealing?.Invoke(damageTaken);
+            damageTaker = _enemyDefiner.GetClosestDamageTaker(_radius);
 
             yield return null;
         }
 
+        _damageDealt = 0;
         OnVampireAttackStopped?.Invoke();
     }   
 }

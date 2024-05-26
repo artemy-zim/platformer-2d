@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8973595204160228526}
-  - component: {fileID: 5263617610317808315}
   m_Layer: 0
   m_Name: Base Attacker
   m_TagString: Untagged
@@ -32,21 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5502229258463268251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5263617610317808315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766148956593661398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e59117ff83c7764c9c9f9de91056c8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 6943722804084211180}
-  _damageAmount: 25
-  _attackDistance: 4
 --- !u!1 &1089584279353779355
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 888012397020639934}
   - component: {fileID: 988370462561662472}
+  - component: {fileID: 1984869487600988778}
   m_Layer: 0
   m_Name: Vampire Attacker
   m_TagString: Untagged
@@ -94,10 +79,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 2847540324411763449}
   _enemyDefiner: {fileID: 8776827722996761485}
-  _counter: {fileID: 3276553539593253312}
+  _counter: {fileID: 1984869487600988778}
   _damageAmount: 0.05
   _attackTime: 6
   _radius: 4
+--- !u!114 &1984869487600988778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089584279353779355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0927da906bf40b4a8e81496b5c88153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attacker: {fileID: 988370462561662472}
+  _cooldown: 5
 --- !u!1 &2202686848169769882
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ff811e08c2ef448ae500b5f2b0c598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _counter: {fileID: 3276553539593253312}
+  _counter: {fileID: 1984869487600988778}
   _text: {fileID: 5922966316919255485}
 --- !u!114 &5922966316919255485
 MonoBehaviour:
@@ -371,7 +370,7 @@ GameObject:
   - component: {fileID: 8103035482453710346}
   - component: {fileID: 8776827722996761485}
   - component: {fileID: 8063113645685154303}
-  - component: {fileID: 3276553539593253312}
+  - component: {fileID: 6858245637557356997}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -597,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attacker: {fileID: 988370462561662472}
   _health: {fileID: 8103035482453710346}
---- !u!114 &3276553539593253312
+--- !u!114 &6858245637557356997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -606,11 +605,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3693700001005297288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0927da906bf40b4a8e81496b5c88153, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e59117ff83c7764c9c9f9de91056c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attacker: {fileID: 988370462561662472}
-  _cooldown: 5
+  _attackerBody: {fileID: 8973595204160228526}
+  _input: {fileID: 6943722804084211180}
+  _damageAmount: 15
+  _attackDistance: 4
 --- !u!1 &5466447607018076394
 GameObject:
   m_ObjectHideFlags: 0

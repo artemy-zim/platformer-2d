@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour
 {
+    [SerializeField] private Transform _attackerBody;
     [SerializeField] private AttackInput _input;
     [SerializeField] private float _damageAmount;
     [SerializeField] private float _attackDistance;
@@ -20,7 +21,7 @@ public class PlayerAttacker : MonoBehaviour
 
     public void TryAttack()
     {
-        _ray = new Ray(transform.position, transform.right);
+        _ray = new Ray(_attackerBody.position, _attackerBody.right);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(_ray.origin, _ray.direction, _attackDistance);
 
@@ -28,9 +29,9 @@ public class PlayerAttacker : MonoBehaviour
         {
             if(hit.collider.gameObject != gameObject)
             {
-                if(hit.transform.TryGetComponent(out Enemy enemy))
+                if(hit.transform.TryGetComponent(out DamageTaker damageTaker))
                 {
-                    enemy.GetComponent<DamageTaker>().TakeDamage(_damageAmount, transform.position);
+                    damageTaker.TakeDamage(_damageAmount, transform.position);
 
                     break;
                 }
